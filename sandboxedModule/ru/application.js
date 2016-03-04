@@ -5,9 +5,16 @@
 // Вывод из глобального контекста модуля
 console.log('From application global context');
 
-
-
 module.exports = function() {
   // Вывод из контекста экспортируемой функции
   console.log('From application exported function');
 };
+
+setTimeout(function () {
+  console.log("2000ms timeout");
+},500);
+
+function sec() {
+  console.log("sec passed");
+}
+setInterval(sec,500);
