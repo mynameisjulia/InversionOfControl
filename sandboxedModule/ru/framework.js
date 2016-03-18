@@ -8,6 +8,7 @@ var fs = require('fs'),
     vm = require('vm'),
     util = require('util');
 
+
 var fileName = './application.js';
 if (process.argv[2] !== undefined) {
   fileName = process.argv[2];
@@ -43,7 +44,13 @@ var context = {
   },
 setTimeout: setTimeout,
     setInterval: setInterval,
-    util: util
+    util: util,
+     require: (module) => {
+    const date = new Date();
+    const text = `${date.toUTCString()} ${module}\n`;
+    writeToFile(text);
+    return require(module);
+  }
 };
 context.global = context;
 var sandbox = vm.createContext(context);

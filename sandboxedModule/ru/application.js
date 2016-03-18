@@ -7,6 +7,8 @@ console.log('From application global context');
 
 console.log(util.isArray([]));
 console.log('Hello from the other side');
+var util = require('util');
+
 
 setTimeout(function () {
   console.log('2000ms timeout');
@@ -20,3 +22,4 @@ module.exports = function() {
   // Вывод из контекста экспортируемой функции
   console.log('From application exported function');
 };
+
